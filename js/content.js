@@ -345,6 +345,65 @@ window.SITE = {
         // { heading: "Progress log", body: ["..."], media: [ ... ] },
       ],
     },
+    {
+      id: "subwoofer",
+      title: "3D-Printed Subwoofer",
+      context: "Personal project",
+      dates: "In progress",
+      year: "2026",
+      tags: ["Onshape", "3D printing", "Digital signal processing", "Loudspeaker design", "Acoustic simulation"],
+      summary: "A 3D-printed ported subwoofer, designed and simulated to match a studio reference sub.",
+      keyStat: { value: "~27 Hz", label: "simulated −3 dB point" },
+      thumb: { type: "image", src: "assets/subwoofer/cad.jpg", fit: "contain", dim: true },
+      specs: [
+        ["Benchmark", "Kali Audio WS-6.2"],
+        ["Enclosure", "3D printed, rear-ported"],
+        ["Port tuning", "~28 Hz"],
+        ["Drive level", "150 W RMS"],
+        ["Filtering", "4th-order 24.5 Hz subsonic HPF + parametric EQ"],
+        ["Simulated SPL", "~104 dB, ±0.5 dB from 30–500 Hz"],
+        ["Peak excursion", "8.3 mm (Xmax 10.5 mm)"],
+        ["Peak port velocity", "11.6 m/s"],
+      ],
+      hero: { type: "image", src: "assets/subwoofer/cad.jpg", fit: "contain", dim: true },
+      sections: [
+        {
+          heading: "Goal",
+          body: [
+            "I'm designing and building a 3D-printed subwoofer, using the Kali Audio WS-6.2 studio reference sub as the benchmark. " +
+            "The enclosure is modeled in Onshape and rear-ported, with the port tuned to about 28 Hz.",
+          ],
+          media: [
+            { type: "image", src: "assets/subwoofer/cad.jpg", caption: "Enclosure CAD in Onshape" },
+          ],
+        },
+        {
+          heading: "Filtering and response",
+          body: [
+            "To protect the driver below the port tuning, I applied a 4th-order subsonic high-pass filter at 24.5 Hz, " +
+            "plus targeted parametric EQ to flatten the response. Simulated at 150 W RMS (near-field), the sub holds about 104 dB " +
+            "with roughly ±0.5 dB of ripple from 30 to 500 Hz, and an estimated −3 dB point around 27 Hz.",
+          ],
+          media: [
+            { type: "image", src: "assets/subwoofer/spl.png", caption: "Simulated SPL at 150 W RMS, near-field" },
+            { type: "image", src: "assets/subwoofer/transfer-function.png", caption: "Transfer function magnitude after the subsonic filter and EQ" },
+          ],
+        },
+        {
+          heading: "Staying inside the driver's limits",
+          body: [
+            "With the filter applied, simulated cone excursion peaks at about 8.3 mm near 38 Hz, below the driver's 10.5 mm Xmax " +
+            "at every frequency. The excursion dip near 28 Hz marks the port tuning, where the port does most of the work.",
+            "Rear port air velocity peaks at about 11.6 m/s near 28 Hz, well under the roughly 17 m/s guideline for avoiding " +
+            "audible port noise (chuffing).",
+          ],
+          media: [
+            { type: "image", src: "assets/subwoofer/excursion.png", caption: "Cone excursion vs. frequency; red line is Xmax (10.5 mm)" },
+            { type: "image", src: "assets/subwoofer/port-velocity.png", caption: "Rear port air velocity at 150 W RMS" },
+          ],
+        },
+      ],
+    },
   ],
 
   /* -------------------------------------------------------------------
